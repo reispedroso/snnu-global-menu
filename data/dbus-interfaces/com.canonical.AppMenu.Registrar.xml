@@ -1,0 +1,29 @@
+<!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN"
+"http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
+<node>
+  <interface name="com.canonical.AppMenu.Registrar">
+    <method name="RegisterWindow">
+      <arg type="u" name="windowId" direction="in"/>
+      <arg type="o" name="menuObjectPath" direction="in"/>
+    </method>
+    <method name="UnregisterWindow">
+      <arg type="u" name="windowId" direction="in"/>
+    </method>
+    <method name="GetMenuForWindow">
+      <arg type="u" name="windowId" direction="in"/>
+      <arg type="s" name="busName" direction="out"/>
+      <arg type="o" name="menuObjectPath" direction="out"/>
+    </method>
+    <method name="GetMenus">
+      <arg type="a(u(so))" name="menus" direction="out"/>
+    </method>
+    <signal name="WindowRegistered">
+      <arg type="u" name="windowId"/>
+      <arg type="s" name="busName"/>
+      <arg type="o" name="menuObjectPath"/>
+    </signal>
+    <signal name="WindowUnregistered">
+      <arg type="u" name="windowId"/>
+    </signal>
+  </interface>
+</node>
